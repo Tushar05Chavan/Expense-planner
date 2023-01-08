@@ -1,3 +1,7 @@
+import 'dart:io';
+
+import 'package:expense_planner/widgets/adaptive_flatbutton.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -27,7 +31,7 @@ class _NewTransactionState extends State<NewTransaction> {
       return;
     }
 
-    widget.addTx(enteredTitle, enteredAmount, _selectedDate);  
+    widget.addTx(enteredTitle, enteredAmount, _selectedDate);
 
     Navigator.of(context).pop();
   }
@@ -54,7 +58,11 @@ class _NewTransactionState extends State<NewTransaction> {
       child: Card(
         elevation: 5,
         child: Container(
-          padding: EdgeInsets.only(top: 10, left: 10, right: 10, bottom: MediaQuery.of(context).viewInsets.bottom + 10),
+          padding: EdgeInsets.only(
+              top: 10,
+              left: 10,
+              right: 10,
+              bottom: MediaQuery.of(context).viewInsets.bottom + 10),
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: <Widget>[
@@ -74,7 +82,7 @@ class _NewTransactionState extends State<NewTransaction> {
                   onSubmitted: (_) => _submitData,
                   // onChanged: (value) {
                   //   amountInput= value;
-    
+
                   // },
                 ),
                 Container(
@@ -84,15 +92,8 @@ class _NewTransactionState extends State<NewTransaction> {
                         child: Text(_selectedDate == null
                             ? 'No Date Chosen'
                             : 'Picked Date: ${DateFormat.yMd().format(_selectedDate!)}  ')),
-                    ElevatedButton(
-                        onPressed: _presentDatePicker,
-                        child: Text(
-                          'Choose Date',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            //color: Theme.of(context).primaryColor
-                          ),
-                        ))
+                            AdaptiveFlatButton(_presentDatePicker, 'Choose Date')
+                    
                   ]),
                 ),
                 ElevatedButton(
