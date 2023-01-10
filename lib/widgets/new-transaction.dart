@@ -92,8 +92,7 @@ class _NewTransactionState extends State<NewTransaction> {
                         child: Text(_selectedDate == null
                             ? 'No Date Chosen'
                             : 'Picked Date: ${DateFormat.yMd().format(_selectedDate!)}  ')),
-                            AdaptiveFlatButton(_presentDatePicker, 'Choose Date')
-                    
+                    AdaptiveFlatButton(_presentDatePicker, 'Choose Date')
                   ]),
                 ),
                 ElevatedButton(
